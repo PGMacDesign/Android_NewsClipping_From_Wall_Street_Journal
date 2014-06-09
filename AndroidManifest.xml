@@ -34,7 +34,7 @@
         
         <!-- Second activity, which is the main menu -->
         <activity
-            android:name=".MainActivity"
+            android:name=".NewMainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.pgmadesign.journalreadingofwallstreet.MAIN" />

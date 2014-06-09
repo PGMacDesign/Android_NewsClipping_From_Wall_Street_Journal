@@ -28,20 +28,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 //Handles the events portion of the tabs from the main menu
-public class AutosFragment extends FragmentActivity {
-	
+public class AutosFragment extends Fragment {
+    
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_autos, container, false);
-		
-
-		
-        //getFragmentManager().beginTransaction().add(R.id.autos_list, new PlaceholderFragment()).commit();
-	    
-
-		
-		return rootView;
+		// Inflate the layout for this fragment
+		return inflater.inflate(R.layout.fragment_autos, container, false);
 	}
 
+	
+	
+}
+	
+	
+	
+	/*   -----------To use later
+	  
+	 
 	//For the options menu
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -66,9 +69,8 @@ public class AutosFragment extends FragmentActivity {
 	
 	
 	
-    /**
-     * A placeholder fragment containing a simple view.
-     */
+    //A placeholder fragment containing a simple view.
+    
 	
     public static class PlaceholderFragment extends ListFragment {
 
@@ -237,7 +239,7 @@ public class AutosFragment extends FragmentActivity {
                 }
             }
         }
-    }
-   
-    
+    }    
 }
+
+*/

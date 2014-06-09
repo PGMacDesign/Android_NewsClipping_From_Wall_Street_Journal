@@ -31,7 +31,7 @@ public class MySkeletonFragment extends Fragment {
 	                           Bundle savedInstanceState) {
 	    // Create, or inflate the Fragment's UI, and return it. 
 	    // If this Fragment has no UI then return null.
-	    return inflater.inflate(R.layout.my_fragment, container, false); //Put your specific fragment here
+	    return inflater.inflate(R.layout.fragment_autos, container, false); //Put your specific fragment here. Remove the fragment_autos!!!
 	  }
 
 
