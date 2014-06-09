@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pgmacdesign.journalreadingofwallstreet"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+	<uses-permission android:name="android.permission.INTERNET" />
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        
+        
+        
+		<!-- First is the splash screen -->
+        <activity 
+            android:name="com.pgmacdesign.journalreadingofwallstreet.Splash"
+            android:label="@string/app_name" >
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                
+            </intent-filter>
+            
+        </activity>
+        
+        
+        <!-- Second activity, which is the main menu -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.pgmadesign.journalreadingofwallstreet.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+ 
+        </activity>
+        
+        
+        <!-- This activity is a handler for tasks-->
+        <activity       
+            android:name=".SharedPrefs"
+            android:label="Shared Preferences"  >
+                        
+        </activity>
+        
+        
+        <!-- This activity is a handler for tasks-->
+        <activity       
+            android:name=".AutosFragment"
+            android:label="Auto Fragment"  >
+                        
+        </activity>
+        
+        
+        <!-- This activity is a handler for tasks-->
+        <activity       
+            android:name=".TabsPagerAdapter"
+            android:label="TabsPagerAdapter"  >
+                        
+        </activity>
+        
+        
+        <!-- This activity is a handler for tasks-->
+        <activity       
+            android:name=".CreateNewAction"
+            android:label="CreateNewAction"  >
+                        
+        </activity>
+        
+        
+                                                                                
+
+        
+        
+        
+        
+        
+        
+        
+        
+    </application>
+
+</manifest>
