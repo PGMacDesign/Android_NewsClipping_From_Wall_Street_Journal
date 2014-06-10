@@ -14,7 +14,10 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import com.pgmacdesign.journalreadingofwallstreet.R.layout;
+
 import android.app.ListFragment;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,15 +28,30 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
-//Handles the events portion of the tabs from the main menu
+//Handles the Autos Fragment of the tabs from the main menu
 public class AutosFragment extends Fragment {
     
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
+		
+		//LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		//View view = inflater.inflate(R.layout.fragment_autos, null);
+		//View rootView = inflater.inflate(layout.fragment_autos, container, false);
+		
+		//Button autos_updated_as_of = (Button) rootView.findViewById(R.id.autos_updated_as_of);
+		
+		//fragment_container.addView(view);
+		//return rootView;
+		
 		return inflater.inflate(R.layout.fragment_autos, container, false);
+		
+		
+		
+		// Inflate the layout for this fragment
+		//return inflater.inflate(R.layout.fragment_autos, container, false);
 	}
 
 	

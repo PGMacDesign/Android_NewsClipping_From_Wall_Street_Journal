@@ -2,20 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical" >
+
+<!-- fragment_autos -->
+    
+    <TextView
+        android:id="@+id/autos_updated_as_of"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button and whatnot" />
+
+
+
+    <ListView
+        android:id="@+id/autos_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
 
     <TextView
-    	android:id="@+id/autos_updated_as_of"
-    	android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:text="" />
-
-
-        <ListView
-            android:id="@+id/autos_list"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent" >
-        </ListView>
- 
-    	
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Words!"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    
 </LinearLayout>

@@ -10,8 +10,15 @@ public class EconomyFragment extends Fragment {
     
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		
+		View rootView = inflater.inflate(R.layout.fragment_economy, container, false);
+		
+		return rootView;
+		
+		/*
 		// Inflate the layout for this fragment
 		return inflater.inflate(R.layout.fragment_economy, container, false);
+		*/
 		
 	}
 }

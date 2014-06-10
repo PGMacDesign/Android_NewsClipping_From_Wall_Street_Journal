@@ -1,22 +1,33 @@
 package com.pgmacdesign.journalreadingofwallstreet;
 
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 
 
-public class NewMainActivity extends Activity {
+public class NewMainActivity extends FragmentActivity implements ActionBar.TabListener{
 	 
-	private static final String TAB_KEY_INDEX = "tab_key";
+	private ViewPager viewPager;
+	private TabsPagerAdapter mAdapter;
+	private ActionBar actionBar;
+	
+	// Tab titles
+	private String[] tabs = { "Autos", "Earnings", "Economy", "Energy", "Health", "Law", "Management", "Small Business", "Statups" };
+	
 	
     /** Called when the activity is first created. */
     @Override
@@ -28,6 +39,12 @@ public class NewMainActivity extends Activity {
 	    ActionBar actionbar = getActionBar();
 	    actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 	
+	    
+	    /*
+	     
+	      Could not get any of this to work :(
+	      
+	     
 	    // create new tabs and set up the titles of the tabs
 	    ActionBar.Tab mAutoTab = actionbar.newTab().setText("Autos");
 	    ActionBar.Tab mEarningsTab = actionbar.newTab().setText("Earnings");
@@ -76,6 +93,14 @@ public class NewMainActivity extends Activity {
         actionbar.addTab(mSmallBusinessTab);
         actionbar.addTab(mStartupsTab);
         
+        
+        */
+        
+        
+        
+        //setContentView(R.layout.fragment_autos);
+        
+        /*
         if (savedInstanceState != null) {
             Toast.makeText(getApplicationContext(),
                     "tab is " + savedInstanceState.getInt(TAB_KEY_INDEX, 0),
@@ -84,6 +109,46 @@ public class NewMainActivity extends Activity {
             actionbar.setSelectedNavigationItem(savedInstanceState.getInt(
                     TAB_KEY_INDEX, 0));
         }
+        */
+        
+        
+        
+        
+        //BREAK///////////////////////////////////////////////////////////////////////
+        viewPager = (ViewPager) findViewById(R.id.pager);
+		actionBar = getActionBar();
+		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+
+		viewPager.setAdapter(mAdapter);
+		actionBar.setHomeButtonEnabled(false);
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);		
+
+		// Adding Tabs
+		for (String tab_name : tabs) {
+			actionBar.addTab(actionBar.newTab().setText(tab_name)
+					.setTabListener(this));
+		}
+
+		/**
+		 * on swiping the viewpager make respective tab selected
+		 * */
+		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+			@Override
+			public void onPageSelected(int position) {
+				// on changing the page
+				// make respected tab selected
+				actionBar.setSelectedNavigationItem(position);
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+			}
+		});
 	} 
     
     @Override
@@ -145,13 +210,6 @@ public class NewMainActivity extends Activity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Toast.makeText(
-                this,
-                "onSaveInstanceState: tab is"
-                        + getActionBar().getSelectedNavigationIndex(),
-                Toast.LENGTH_SHORT).show();
-        outState.putInt(TAB_KEY_INDEX, getActionBar()
-                .getSelectedNavigationIndex());
  
     }
     
@@ -177,7 +235,7 @@ public class NewMainActivity extends Activity {
 
 		public void onTabSelected(Tab tab, FragmentTransaction ft) {
 			Toast.makeText(context, "Selected!", Toast.LENGTH_SHORT).show();
-			ft.replace(R.id.fragment_container, fragment);
+			ft.replace(R.id.pager, fragment);
 		}
 
 		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
@@ -203,6 +261,26 @@ public class NewMainActivity extends Activity {
 
 		}
 
+	}
+
+
+	/////////////////////////////////////////
+	@Override
+	public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
