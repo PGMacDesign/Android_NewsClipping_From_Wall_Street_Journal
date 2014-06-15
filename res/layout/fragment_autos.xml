@@ -19,13 +19,6 @@
         android:text="Button and whatnot" />
 
 
-
-    <ListView
-        android:id="@+id/autos_list"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
-    </ListView>
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
