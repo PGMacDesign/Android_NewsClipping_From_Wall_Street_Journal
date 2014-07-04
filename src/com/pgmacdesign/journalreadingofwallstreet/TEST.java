@@ -33,6 +33,9 @@ public class TEST {
 	
 	/*
 	 * 
+
+	Seeing if this can be used for refreshable views...
+
 	 ListView listView1 = (ListView) rootView.findViewById(R.id.autos_list);
 		
 		Product[] items = { 

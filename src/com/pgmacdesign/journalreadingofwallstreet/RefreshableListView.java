@@ -192,7 +192,7 @@ public class RefreshableListView extends ListView implements OnScrollListener {
 			if (!isLoadingMore) {
 				isLoadingMore = true;
 				footerProgressBar.setVisibility(View.VISIBLE);
-				refreshDelegate.startLoadMore();
+				refreshDelegate.startLoadMore(); 
 			}
 		}
 	};
