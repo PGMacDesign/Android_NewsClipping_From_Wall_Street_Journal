@@ -76,6 +76,13 @@
                         
         </activity>
         
+        <!-- This activity is a handler for tasks-->
+        <activity       
+            android:name=".PostViewActivity"
+            android:label="Post View Activity"  >
+                        
+        </activity>
+        
         
                                                                                 
 

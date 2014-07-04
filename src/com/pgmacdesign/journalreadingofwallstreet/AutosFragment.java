@@ -74,10 +74,10 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 	//private AdView adView;
 	private Tracker googleTracker;
 	private GoogleAnalytics googleAnalytics;
-	private final static String PREFERENCE_FILENAME = "JMSRssReader";
+	private final static String PREFERENCE_FILENAME = "journalreadingofwallstreet";
 	private Intent postviewIntent;
 
-	private static Context mContext;
+	//private static Context mContext;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -117,8 +117,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 		adView = new AdView(this, AdSize.SMART_BANNER, "a151cfacdc9a91e");
 		LinearLayout adContainer = (LinearLayout) this
 				.findViewById(R.id.adsContainer);
-		adContainer.addView(adView);
-
+						adContainer.addView(adView);
 		AdRequest adRequest = new AdRequest();
 		Set<String> keywordsSet = new HashSet<String>();
 		keywordsSet.add("game");
@@ -126,8 +125,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 		keywordsSet.add("money");
 		keywordsSet.add("girl");
 		adRequest.addKeywords(keywordsSet);
-		adView.loadAd(adRequest);
-		 
+		adView.loadAd(adRequest);	 
 		*/
 		
 		guidList = new ArrayList<String>();
@@ -139,9 +137,11 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 		postListView.onRefreshStart();
 		postListView.setOnItemClickListener(onItemClickListener);
 		
-
-		
-		
+		L.myLog("Line 140 Works");////////////////////////////////////
+		startFresh();
+		L.myLog("Line 142 Works");////////////////////////////////////
+		startLoadMore();
+		L.myLog("Line 144 Works");////////////////////////////////////
 		return rootView;
 
 	}
@@ -167,14 +167,15 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 			postInfo.putString("content", data.postContent);
 			postInfo.putString("link", data.postLink);
 
-			/*   Cant get this to work :(
+			//Cant get this to work :(  //////////////////////////////////////////////////////////////////////////////////
 		 	//This section of code is essential to passing the address to the web browser and creating an intent out
 			if (postviewIntent == null) {
-				postviewIntent = new Intent(this.NewMainActivity, PostViewActivity.class);
+				postviewIntent = new Intent(getActivity(), PostViewActivity.class);
+				L.myLog("Line 174 Works");////////////////////////////////////
 			}
-			*/  
-
+			L.myLog("Line 176 Works");////////////////////////////////////  
 			postviewIntent.putExtras(postInfo);
+			L.myLog("Line 178 Works");////////////////////////////////////
 			startActivity(postviewIntent);
 		}
 	};
@@ -194,7 +195,8 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 			try {
 				
 				appString = getActivity().getPackageManager().getPackageInfo(
-						"com.pgmacdesign.journalreadingofwallstreet", 0).versionName;
+						//"com.pgmacdesign.journalreadingofwallstreet", 0).versionName;
+						getActivity().getPackageName(), 0).versionName;
 				appString = "Journal Reader of Wall Street " + appString;
 			} catch (NameNotFoundException e) {
 				Toast.makeText(this.getActivity(), "Get Version Name Error", Toast.LENGTH_SHORT).show();
@@ -213,6 +215,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 		@Override
 		protected ArrayList<PostData> doInBackground(String... params) {
 			// TODO Auto-generated method stub
+			L.myLog("Line 218 Works");////////////////////////////////////
 			String urlStr = params[0];
 			InputStream is = null;
 			ArrayList<PostData> postDataList = new ArrayList<PostData>();
@@ -220,11 +223,11 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 			URL url;
 			try {
 				url = new URL(urlStr);
-
-				HttpURLConnection connection = (HttpURLConnection) url
-						.openConnection();
-				//connection.setReadTimeout(10 * 1000);
-				//connection.setConnectTimeout(10 * 1000);
+				L.myLog("Line 226 Works");////////////////////////////////////
+				
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setReadTimeout(10 * 1000);
+				connection.setConnectTimeout(10 * 1000);
 				connection.setRequestMethod("GET");
 				connection.setDoInput(true);
 				connection.connect();
@@ -246,6 +249,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 				while (eventType != XmlPullParser.END_DOCUMENT) {
 					if (eventType == XmlPullParser.START_DOCUMENT) {
 
+						L.myLog("Line 252 Works");////////////////////////////////////
 					} else if (eventType == XmlPullParser.START_TAG) {
 						if (xpp.getName().equals("item")) {
 							pdData = new PostData();
@@ -268,18 +272,21 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 							Date postDate = dateFormat.parse(pdData.postDate);
 							pdData.postDate = dateFormat.format(postDate);
 							postDataList.add(pdData);
+							L.myLog("Line 275 Works");////////////////////////////////////
 						} else {
 							currentTag = RSSXMLTag.IGNORETAG;
 						}
 					} else if (eventType == XmlPullParser.TEXT) {
 						String content = xpp.getText();
 						content = content.trim();
+						L.myLog("Line 282 Works");////////////////////////////////////
 						if (pdData != null) {
 							switch (currentTag) {
 							case TITLE:
 								if (content.length() != 0) {
 									if (pdData.postTitle != null) {
 										pdData.postTitle += content;
+										L.myLog("Line 289 Works");////////////////////////////////////
 									} else {
 										pdData.postTitle = content;
 									}
@@ -289,6 +296,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 								if (content.length() != 0) {
 									if (pdData.postLink != null) {
 										pdData.postLink += content;
+										L.myLog("Line 299 Works");////////////////////////////////////
 									} else {
 										pdData.postLink = content;
 									}
@@ -298,6 +306,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 								if (content.length() != 0) {
 									if (pdData.postDate != null) {
 										pdData.postDate += content;
+										L.myLog("Line 309 Works");////////////////////////////////////
 									} else {
 										pdData.postDate = content;
 									}
@@ -307,6 +316,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 								if (content.length() != 0) {
 									if (pdData.postContent != null) {
 										pdData.postContent += content;
+										L.myLog("Line 319 Works");////////////////////////////////////
 									} else {
 										pdData.postContent = content;
 									}
@@ -316,6 +326,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 								if (content.length() != 0) {
 									if (pdData.postGuid != null) {
 										pdData.postGuid += content;
+										L.myLog("Line 329 Works");////////////////////////////////////
 									} else {
 										pdData.postGuid = content;
 									}
@@ -365,6 +376,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 						null);
 				e.printStackTrace();
 			}
+			L.myLog("Line 379 Works");////////////////////////////////////
 			return postDataList;
 		}
 
@@ -387,17 +399,21 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 					listData.add(result.get(i));
 				}
 			}
+			L.myLog("Line 402 Works");////////////////////////////////////
 
 			if (isupdated) {
 				postAdapter.notifyDataSetChanged();
+				L.myLog("Line 406 Works");////////////////////////////////////
 			}
 
 			isLoading = false;
 
 			if (isRefreshLoading) {
 				postListView.onRefreshComplete();
+				L.myLog("Line 413 Works");////////////////////////////////////
 			} else {
 				postListView.onLoadingMoreComplete();
+				L.myLog("Line 416 Works");////////////////////////////////////
 			}
 
 			super.onPostExecute(result);
@@ -409,7 +425,8 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 		if (!isLoading) {
 			isRefreshLoading = true;
 			isLoading = true;
-			
+			L.myLog("Line 428 Works");////////////////////////////////////
+			L.myLog("Line 429 Works");////////////////////////////////////
 			/*
 			 * Pagination: 
 			 * 
@@ -425,6 +442,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 			new RssDataController().execute(urlString);
 		} else {
 			postListView.onRefreshComplete();
+			L.myLog("Line 445 Works");////////////////////////////////////
 		}
 	}
 
@@ -448,24 +466,16 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 			 */
 			new RssDataController().execute(urlString); 
 					//+ (++pagnation)); LEAVING THIS OFF FOR NOW, will be useful for multiple pages 
+			
+			L.myLog("Line 470 Works");
 		} else {
 			postListView.onLoadingMoreComplete();
 		}
 	}
 
-	@Override
-	public void onDestroy() {
-		// TODO Auto-generated method stub
-		//if (adView != null) {
-			//adView.destroy();
-		//}
-
-		super.onDestroy();
-	}
-	
-	public static void setContext(Context context) {
-		mContext = context;
-	}
+	//public static void setContext(Context context) {
+		//mContext = context;
+	//}
 	
 	
 	
