@@ -83,7 +83,14 @@
                         
         </activity>
         
+        <!-- This activity is a handler for tasks-->
+        <activity       
+            android:name=".GetPictures"
+            android:label="Get Pictures"  >
+                        
+        </activity>
         
+          
                                                                                 
 
         

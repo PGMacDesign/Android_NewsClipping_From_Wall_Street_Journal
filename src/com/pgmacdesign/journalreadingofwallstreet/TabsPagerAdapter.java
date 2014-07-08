@@ -26,7 +26,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 			return new EconomyFragment();
 		case 3:
 			//Notes fragment activity
-			return new EnergyFragment();
+			return new USBusiness();
 		case 4:
 			//Events fragment activity
 			return new HealthFragment();
@@ -38,10 +38,10 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 			return new ManagementFragment();
 		case 7:
 			//Events fragment activity
-			return new SmallBusinessFragment();
+			return new MediaAndMarketing();
 		case 8:
 			//Tasks fragment activity
-			return new StartupsFragment();			
+			return new PoliticsAndCampaign();			
 		}
 
 		return null;

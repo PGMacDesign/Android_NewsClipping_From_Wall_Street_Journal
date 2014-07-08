@@ -26,7 +26,7 @@ public class NewMainActivity extends FragmentActivity implements ActionBar.TabLi
 	private ActionBar actionBar;
 	
 	// Tab titles
-	private String[] tabs = { "Autos", "Earnings", "Economy", "Energy", "Health", "Law", "Management", "Small Business", "Statups" };
+	private String[] tabs = { "Autos", "Earnings", "Economy", "U.S. Business", "Health", "Law", "Management", "Media & Marketing", "Politics & Campaign" };
 	
 	
     /** Called when the activity is first created. */

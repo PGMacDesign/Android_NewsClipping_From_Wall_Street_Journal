@@ -38,7 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class HealthFragment extends Fragment  {
+public class MediaAndMarketing extends Fragment  {
 	
 	ListView earnings_list;
 	TextView earnings_updated_as_of;
@@ -49,7 +49,7 @@ public class HealthFragment extends Fragment  {
 	}
 
 	private ArrayList<PostData> listData;
-	private String urlString = "http://online.wsj.com/xml/rss/3_7089.xml"; //Adjust the URL string here for the XML parser
+	private String urlString = "http://online.wsj.com/xml/rss/3_7020.xml"; //Adjust the URL string here for the XML parser
 	private RefreshableListView postListView;
 	private PostItemAdapter postAdapter;
 	private int pagnation = 1; // start from 1

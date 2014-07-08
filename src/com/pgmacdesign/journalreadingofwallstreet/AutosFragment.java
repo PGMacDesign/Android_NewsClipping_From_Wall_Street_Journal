@@ -52,7 +52,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class AutosFragment extends Fragment implements RefreshableInterface {
+public class AutosFragment extends Fragment  {
 	
 	ListView earnings_list;
 	TextView earnings_updated_as_of;
@@ -63,7 +63,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 	}
 
 	private ArrayList<PostData> listData;
-	private String urlString = "http://online.wsj.com/xml/rss/3_7088.xml"; //Adjust the URL string here for the XML parser
+	private String urlString = "http://online.wsj.com/xml/rss/3_7092.xml"; //Adjust the URL string here for the XML parser
 	private RefreshableListView postListView;
 	private PostItemAdapter postAdapter;
 	private int pagnation = 1; // start from 1
@@ -84,8 +84,6 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 			Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.activity_postlist, container, false);
-		// View rootView = inflater.inflate(R.layout.fragment_earnings,
-		// container, false);
 		
 		//setUpdatedTime();
 		
@@ -376,13 +374,13 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 						null);
 				e.printStackTrace();
 			}
-			L.myLog("Line 379 Works");////////////////////////////////////
+			//
 			return postDataList;
 		}
 
 		@Override
 		protected void onPostExecute(ArrayList<PostData> result) {
-			// TODO Auto-generated method stub
+			
 			boolean isupdated = false;
 			for (int i = 0; i < result.size(); i++) {
 				// check if the post is already in the list
@@ -497,25 +495,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 			earnings_updated_as_of.setText("Updated as of " + today.year + "-" + month + "-" + today.monthDay + " : " + today.format("%k:%M"));
 		}
 		
-		
-		
-	   
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	// Called when the Fragment is attached to its parent Activity.
 	@Override
 	public void onAttach(Activity activity) {
@@ -526,9 +506,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 	// Called to do the initial creation of the Fragment.
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		
+		super.onCreate(savedInstanceState);	
 		
 	}
 
@@ -540,8 +518,7 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 		// Complete the Fragment initialization – particularly anything
 		// that requires the parent Activity to be initialized or the
 		// Fragment's view to be fully inflated.
-		
-		
+				
 	}
 
 	// Called at the start of the visible lifetime.
@@ -595,7 +572,6 @@ public class AutosFragment extends Fragment implements RefreshableInterface {
 		// Clean up resources related to the View.
 		super.onDestroyView();
 	}
-
 
 
 	// Called when the Fragment has been detached from its parent Activity.
